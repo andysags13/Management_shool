@@ -20,5 +20,15 @@ return
     'pin_create' => 'Pins Generated Successfully',
     'del_teacher' => 'Before you can delete This Teacher, You must find a replacement for the subject(s) He/She teaches. View Teacher Profile to see His/Her Subjects',
     'invalid_time_slot' => 'The Start Time and End Time Cannot Be The Same',
+    'my_children' => 'My Children',
+    'sn' => 'S/N',
+    'photo' => 'Photo',
+    'name' => 'Name',
+    'adm_no' => 'ADM No',
+    'section' => 'Section',
+    'email' => 'Email',
+    'action' => 'Action',
+    'view_profile' => 'View Profile',
+    'marksheet' => 'Marksheet',
 
 ];

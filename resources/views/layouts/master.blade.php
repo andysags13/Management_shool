@@ -14,11 +14,19 @@
 </head>
 
 <body class="{{ in_array(Route::currentRouteName(), ['payments.invoice', 'marks.tabulation', 'marks.show', 'ttr.manage', 'ttr.show']) ? 'sidebar-xs' : '' }}">
-
-@include('partials.top_menu')
-<div class="page-content">
-    @include('partials.menu')
-    <div class="content-wrapper">
+    @include('partials.top_menu')
+    <div class="page-content">
+        @include('partials.menu')
+        <div class="content-wrapper">
+        <div class="language-selector">
+                <form action="{{ route('setLocale') }}" method="POST">
+                    @csrf
+                    <select name="locale" onchange="this.form.submit()">
+                        <option value="fr" {{ app()->getLocale() == 'fr' ? 'selected' : '' }}>Français</option>
+                        <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
+                    </select>
+                </form>
+            </div>
         @include('partials.header')
 
         <div class="content">

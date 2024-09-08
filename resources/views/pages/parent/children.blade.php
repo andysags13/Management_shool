@@ -12,13 +12,13 @@
             <table class="table datatable-button-html5-columns">
                 <thead>
                 <tr>
-                    <th>S/N</th>
-                    <th>Photo</th>
-                    <th>Name</th>
-                    <th>ADM_No</th>
-                    <th>Section</th>
-                    <th>Email</th>
-                    <th>Action</th>
+                <th>{{ __('msg.sn') }}</th>
+                    <th>{{ __('msg.photo') }}</th>
+                    <th>{{ __('msg.name') }}</th>
+                    <th>{{ __('msg.adm_no') }}</th>
+                    <th>{{ __('msg.section') }}</th>
+                    <th>{{ __('msg.email') }}</th>
+                    <th>{{ __('msg.action') }}</th>
                 </tr>
                 </thead>
                 <tbody>
