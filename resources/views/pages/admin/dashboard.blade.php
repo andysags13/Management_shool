@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('page_title', 'My Dashboard')
+@section('page_title', __('msg.my_dashboard'))
 
 @section('content')
-    <h2>WELCOME {{ Auth::user()->name }}. This is your DASHBOARD</h2>
-    @endsection
+    <h2>{{ __('msg.welcome', ['name' => Auth::user()->name]) }}. {{ __('msg.this_is_your_dashboard') }}</h2>
+@endsection

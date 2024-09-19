@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('page_title', 'My Children')
+@section('page_title', __('msg.my_children'))
 @section('content')
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">My Children</h6>
+            <h6 class="card-title">{{ __('msg.my_children') }}</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
@@ -12,7 +12,7 @@
             <table class="table datatable-button-html5-columns">
                 <thead>
                 <tr>
-                <th>{{ __('msg.sn') }}</th>
+                    <th>{{ __('msg.sn') }}</th>
                     <th>{{ __('msg.photo') }}</th>
                     <th>{{ __('msg.name') }}</th>
                     <th>{{ __('msg.adm_no') }}</th>
@@ -38,9 +38,8 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-left">
-                                        <a href="{{ route('students.show', Qs::hash($s->id)) }}" class="dropdown-item"><i class="icon-eye"></i> View Profile</a>
-                                        <a target="_blank" href="{{ route('marks.year_selector', Qs::hash($s->user->id)) }}" class="dropdown-item"><i class="icon-check"></i> Marksheet</a>
-
+                                        <a href="{{ route('students.show', Qs::hash($s->id)) }}" class="dropdown-item"><i class="icon-eye"></i> {{ __('msg.view_profile') }}</a>
+                                        <a target="_blank" href="{{ route('marks.year_selector', Qs::hash($s->user->id)) }}" class="dropdown-item"><i class="icon-check"></i> {{ __('msg.marksheet') }}</a>
                                     </div>
                                 </div>
                             </div>
