@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('page_title', 'Manage Payments')
+@section('page_title', __('msg.manage_payments'))
 @section('content')
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h5 class="card-title"><i class="icon-cash2 mr-2"></i> Select year</h5>
+            <h5 class="card-title"><i class="icon-cash2 mr-2"></i> {{ __('msg.select_year') }}</h5>
             {!! Qs::getPanelOptions() !!}
         </div>
 
@@ -16,8 +16,8 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="form-group">
-                                    <label for="year" class="col-form-label font-weight-bold">Select Year <span class="text-danger">*</span></label>
-                                    <select data-placeholder="Select Year" required id="year" name="year" class="form-control select">
+                                    <label for="year" class="col-form-label font-weight-bold">{{ __('msg.select_year') }} <span class="text-danger">*</span></label>
+                                    <select data-placeholder="{{ __('msg.select_year') }}" required id="year" name="year" class="form-control select">
                                         @foreach($years as $yr)
                                             <option {{ ($selected && $year == $yr->year) ? 'selected' : '' }} value="{{ $yr->year }}">{{ $yr->year }}</option>
                                         @endforeach
@@ -27,7 +27,7 @@
 
                             <div class="col-md-2 mt-4">
                                 <div class="text-right mt-1">
-                                    <button type="submit" class="btn btn-primary">Submit <i class="icon-paperplane ml-2"></i></button>
+                                    <button type="submit" class="btn btn-primary">{{ __('msg.submit') }} <i class="icon-paperplane ml-2"></i></button>
                                 </div>
                             </div>
 
@@ -42,15 +42,15 @@
 @if($selected)
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Manage Payments for {{ $year }} Session</h6>
+            <h6 class="card-title">{{ __('msg.manage_payments_for') }} {{ $year }} {{ __('msg.session') }}</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
         <div class="card-body">
             <ul class="nav nav-tabs nav-tabs-highlight">
-                <li class="nav-item"><a href="#all-payments" class="nav-link active" data-toggle="tab">All Classes</a></li>
+                <li class="nav-item"><a href="#all-payments" class="nav-link active" data-toggle="tab">{{ __('msg.all_classes') }}</a></li>
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Class Payments</a>
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('msg.class_payments') }}</a>
                     <div class="dropdown-menu dropdown-menu-right">
                         @foreach($my_classes as $mc)
                             <a href="#pc-{{ $mc->id }}" class="dropdown-item" data-toggle="tab">{{ $mc->name }}</a>
@@ -65,13 +65,13 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Amount</th>
-                                <th>Ref_No</th>
-                                <th>Class</th>
-                                <th>Method</th>
-                                <th>Info</th>
-                                <th>Action</th>
+                                <th>{{ __('msg.title') }}</th>
+                                <th>{{ __('msg.amount') }}</th>
+                                <th>{{ __('msg.ref_no') }}</th>
+                                <th>{{ __('msg.class') }}</th>
+                                <th>{{ __('msg.method') }}</th>
+                                <th>{{ __('msg.info') }}</th>
+                                <th>{{ __('msg.action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -93,9 +93,9 @@
 
                                                 <div class="dropdown-menu dropdown-menu-left">
                                                     {{--Edit--}}
-                                                <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                                    <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-pencil"></i> {{ __('msg.edit') }}</a>
                                                     {{--Delete--}}
-                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> {{ __('msg.delete') }}</a>
                                                     <form method="post" id="item-delete-{{ $p->id }}" action="{{ route('payments.destroy', $p->id) }}" class="hidden">@csrf @method('delete')</form>
 
                                                 </div>
@@ -114,13 +114,13 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
-                                <th>Amount</th>
-                                <th>Ref_No</th>
-                                <th>Class</th>
-                                <th>Method</th>
-                                <th>Info</th>
-                                <th>Action</th>
+                                <th>{{ __('msg.title') }}</th>
+                                <th>{{ __('msg.amount') }}</th>
+                                <th>{{ __('msg.ref_no') }}</th>
+                                <th>{{ __('msg.class') }}</th>
+                                <th>{{ __('msg.method') }}</th>
+                                <th>{{ __('msg.info') }}</th>
+                                <th>{{ __('msg.action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -142,9 +142,9 @@
 
                                                 <div class="dropdown-menu dropdown-menu-left">
                                                     {{--Edit--}}
-                                                    <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-pencil"></i> Edit</a>
+                                                    <a href="{{ route('payments.edit', $p->id) }}" class="dropdown-item"><i class="icon-pencil"></i> {{ __('msg.edit') }}</a>
                                                     {{--Delete--}}
-                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> Delete</a>
+                                                    <a id="{{ $p->id }}" onclick="confirmDelete(this.id)" href="#" class="dropdown-item"><i class="icon-trash"></i> {{ __('msg.delete') }}</a>
                                                     <form method="post" id="item-delete-{{ $p->id }}" action="{{ route('payments.destroy', $p->id) }}" class="hidden">@csrf @method('delete')</form>
 
                                                 </div>
@@ -157,12 +157,9 @@
                         </table>
 
                     </div>
-                    @endforeach
+                @endforeach
             </div>
         </div>
     </div>
-    @endif
-
-    {{--Payments List Ends--}}
-
+@endif
 @endsection

@@ -1,3 +1,0 @@
-J'ai ajouter une option de sélection de langue (Français ou Anglais) pour mon site. Actuellement tout le site est en français. ils fait donc que dans les vues, il y ait des trucs du genre <th>{{ __('msg.action') }}</th> à la place des textes bruts pour gérer le changement de langue.
-Je vais donc te passer toutes les vues du projet et tu vas me les retourner en remplaçant les textes bruts et en ajoutant le essages dans les msg.php
-tu as compris ? Tu es prêt ?

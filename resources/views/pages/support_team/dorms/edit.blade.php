@@ -1,10 +1,10 @@
 @extends('layouts.master')
-@section('page_title', 'Edit Dorm - '.$dorm->name)
+@section('page_title', __('msg.edit_dorm') . ' - ' . $dorm->name)
 @section('content')
 
     <div class="card">
         <div class="card-header header-elements-inline">
-            <h6 class="card-title">Edit Dorm</h6>
+            <h6 class="card-title">{{ __('msg.edit_dorm') }}</h6>
             {!! Qs::getPanelOptions() !!}
         </div>
 
@@ -14,21 +14,21 @@
                     <form class="ajax-update" data-reload="#page-header" method="post" action="{{ route('dorms.update', $dorm->id) }}">
                         @csrf @method('PUT')
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label font-weight-semibold">Name <span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label font-weight-semibold">{{ __('msg.name') }} <span class="text-danger">*</span></label>
                             <div class="col-lg-9">
-                                <input name="name" value="{{ $dorm->name }}" required type="text" class="form-control" placeholder="Name of Dormitory">
+                                <input name="name" value="{{ $dorm->name }}" required type="text" class="form-control" placeholder="{{ __('msg.name_of_dormitory') }}">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label font-weight-semibold">Description</label>
+                            <label class="col-lg-3 col-form-label font-weight-semibold">{{ __('msg.description') }}</label>
                             <div class="col-lg-9">
-                                <input name="description" value="{{ $dorm->description }}"  type="text" class="form-control" placeholder="Description of Dormitory">
+                                <input name="description" value="{{ $dorm->description }}" type="text" class="form-control" placeholder="{{ __('msg.description_of_dormitory') }}">
                             </div>
                         </div>
 
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Submit form <i class="icon-paperplane ml-2"></i></button>
+                            <button type="submit" class="btn btn-primary">{{ __('msg.submit_form') }} <i class="icon-paperplane ml-2"></i></button>
                         </div>
                     </form>
                 </div>
