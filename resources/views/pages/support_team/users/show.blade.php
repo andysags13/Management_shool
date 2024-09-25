@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('page_title', 'User Profile - '.$user->name)
+@section('page_title', __('msg.user_profile') . ' - ' . $user->name)
 @section('content')
     <div class="row">
         <div class="col-md-3 text-center">
@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs nav-tabs-highlight">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active" >{{ $user->name }}</a>
+                            <a href="#" class="nav-link active">{{ $user->name }}</a>
                         </li>
                     </ul>
 
@@ -26,70 +26,69 @@
                             <table class="table table-bordered">
                                 <tbody>
                                 <tr>
-                                    <td class="font-weight-bold">Name</td>
+                                    <td class="font-weight-bold">{{ __('msg.name') }}</td>
                                     <td>{{ $user->name }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-weight-bold">Gender</td>
+                                    <td class="font-weight-bold">{{ __('msg.gender') }}</td>
                                     <td>{{ $user->gender }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-weight-bold">Address</td>
+                                    <td class="font-weight-bold">{{ __('msg.address') }}</td>
                                     <td>{{ $user->address }}</td>
                                 </tr>
                                 @if($user->email)
                                     <tr>
-                                        <td class="font-weight-bold">Email</td>
-                                        <td>{{$user->email }}</td>
+                                        <td class="font-weight-bold">{{ __('msg.email') }}</td>
+                                        <td>{{ $user->email }}</td>
                                     </tr>
                                 @endif
                                 @if($user->username)
                                     <tr>
-                                        <td class="font-weight-bold">Username</td>
-                                        <td>{{$user->username }}</td>
+                                        <td class="font-weight-bold">{{ __('msg.username') }}</td>
+                                        <td>{{ $user->username }}</td>
                                     </tr>
                                 @endif
                                 @if($user->phone)
                                     <tr>
-                                        <td class="font-weight-bold">Phone</td>
-                                        <td>{{$user->phone.' '.$user->phone2 }}</td>
+                                        <td class="font-weight-bold">{{ __('msg.phone') }}</td>
+                                        <td>{{ $user->phone . ' ' . $user->phone2 }}</td>
                                     </tr>
                                 @endif
                                 <tr>
-                                    <td class="font-weight-bold">Birthday</td>
-                                    <td>{{$user->dob }}</td>
+                                    <td class="font-weight-bold">{{ __('msg.birthday') }}</td>
+                                    <td>{{ $user->dob }}</td>
                                 </tr>
                                 @if($user->bg_id)
                                     <tr>
-                                        <td class="font-weight-bold">Blood Group</td>
-                                        <td>{{$user->blood_group->name }}</td>
+                                        <td class="font-weight-bold">{{ __('msg.blood_group') }}</td>
+                                        <td>{{ $user->blood_group->name }}</td>
                                     </tr>
                                 @endif
                                 @if($user->nal_id)
                                     <tr>
-                                        <td class="font-weight-bold">Nationality</td>
-                                        <td>{{$user->nationality->name }}</td>
+                                        <td class="font-weight-bold">{{ __('msg.nationality') }}</td>
+                                        <td>{{ $user->nationality->name }}</td>
                                     </tr>
                                 @endif
                                 @if($user->state_id)
                                     <tr>
-                                        <td class="font-weight-bold">State</td>
-                                        <td>{{$user->state->name }}</td>
+                                        <td class="font-weight-bold">{{ __('msg.state') }}</td>
+                                        <td>{{ $user->state->name }}</td>
                                     </tr>
                                 @endif
                                 @if($user->lga_id)
                                     <tr>
-                                        <td class="font-weight-bold">LGA</td>
-                                        <td>{{$user->lga->name }}</td>
+                                        <td class="font-weight-bold">{{ __('msg.lga') }}</td>
+                                        <td>{{ $user->lga->name }}</td>
                                     </tr>
                                 @endif
                                 @if($user->user_type == 'parent')
                                     <tr>
-                                        <td class="font-weight-bold">Children/Ward</td>
+                                        <td class="font-weight-bold">{{ __('msg.children_ward') }}</td>
                                         <td>
-                                        @foreach(Qs::findMyChildren($user->id) as $sr)
-                                            <span> - <a href="{{ route('students.show', Qs::hash($sr->id)) }}">{{ $sr->user->name.' - '.$sr->my_class->name. ' '.$sr->section->name }}</a></span><br>
-
+                                            @foreach(Qs::findMyChildren($user->id) as $sr)
+                                                <span> - <a href="{{ route('students.show', Qs::hash($sr->id)) }}">{{ $sr->user->name . ' - ' . $sr->my_class->name . ' ' . $sr->section->name }}</a></span><br>
                                             @endforeach
                                         </td>
                                     </tr>
@@ -97,10 +96,10 @@
 
                                 @if($user->user_type == 'teacher')
                                     <tr>
-                                        <td class="font-weight-bold">My Subjects</td>
+                                        <td class="font-weight-bold">{{ __('msg.my_subjects') }}</td>
                                         <td>
                                             @foreach(Qs::findTeacherSubjects($user->id) as $sub)
-                                                <span> - {{ $sub->name.' ('.$sub->my_class->name.')' }}</span><br>
+                                                <span> - {{ $sub->name . ' (' . $sub->my_class->name . ')' }}</span><br>
                                             @endforeach
                                         </td>
                                     </tr>
@@ -115,7 +114,6 @@
             </div>
         </div>
     </div>
-
 
     {{--User Profile Ends--}}
 
